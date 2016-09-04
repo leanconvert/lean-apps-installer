@@ -16,12 +16,14 @@ Bash script for pre-installing multiple applications to your Mac.
 
 3. Run `./leanconfig.sh` to install applications
 
+Read more about `brew cask` [here](https://caskroom.github.io/)
+
 # Contribute
 
 Please update the `leanconfig.sh` file with required applications. To do so you need:
 
 1. Run `brew cask search <application-name>` to see if the required application has its `cask` in the `brew`
 
-2. Add `brew cask install <application-name>` if such `cask` exists in `brew`
+2. Add `brew cask install <application-name>` line to the `./leanconfig.sh` file if such `cask` exists in `brew`
 
 3. You can use `npm` to install npm packages. Use `brew cask` for the application only
