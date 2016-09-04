@@ -17,4 +17,3 @@ brew cask install postman
 # Node Global Packages
 brew install nodejs
 npm i -g http-server
-npm i -g mm-to-json
