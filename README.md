@@ -7,7 +7,7 @@ Bash script for pre-installing multiple applications to your Mac.
 1. Install `homebrew`
 
     ```shell
-    ruby -e "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ruby -e "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/master/install")"
     ```
 
 2. Copy [bash script](https://gitlab.com/LeanConvert/lean-apps-installer/blob/master/leanconfig.sh) into the `/home` (user root) directory of your computer
