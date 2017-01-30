@@ -13,8 +13,8 @@ brew cask install iterm2
 brew cask install parallels-desktop
 brew cask install spectacle
 brew cask install postman
-brew cask skype
-brew cask dashlane
+brew cask install skype
+brew cask install dashlane
 
 
 # Node Global Packages
