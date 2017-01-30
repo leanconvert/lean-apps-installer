@@ -20,3 +20,4 @@ brew cask dashlane
 # Node Global Packages
 brew install nodejs
 npm i -g http-server
+npm i -g git
