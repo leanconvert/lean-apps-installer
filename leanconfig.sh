@@ -15,7 +15,7 @@ brew cask install spectacle
 brew cask install postman
 brew cask install skype
 brew cask install dashlane
-
+brew cask install snagit
 
 # Node Global Packages
 brew install nodejs
