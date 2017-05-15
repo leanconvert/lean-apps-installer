@@ -16,7 +16,7 @@ brew cask install postman
 brew cask install skype
 brew cask install dashlane
 brew cask install snagit
-brew cask install avira-antivirus
+brew cask install avg-antivirus
 
 # Node Global Packages
 brew install nodejs
