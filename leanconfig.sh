@@ -17,6 +17,7 @@ brew cask install skype
 brew cask install dashlane
 brew cask install snagit
 brew cask install avg-antivirus
+brew cask install nordvpn
 
 # Node Global Packages
 brew install nodejs
