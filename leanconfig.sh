@@ -18,8 +18,13 @@ brew cask install dashlane
 brew cask install snagit
 brew cask install avg-antivirus
 brew cask install nordvpn
+brew cask install visual-studio-code
+brew cask install clipy
+brew cask install cloudapp
+
 
 # Node Global Packages
 brew install nodejs
 npm i -g http-server
 npm i -g git
+npm i -g trash-cli
