@@ -1,30 +1,54 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# Applications
-brew cask install google-chrome
-brew cask install google-drive
-brew cask install firefox
-brew cask install sublime-text
-brew cask install adobe-photoshop-cc
-brew cask install slack
-brew cask install licecap
-brew cask install jing
-brew cask install iterm2
-brew cask install parallels-desktop
-brew cask install spectacle
-brew cask install postman
-brew cask install skype
-brew cask install dashlane
-brew cask install snagit
-brew cask install avg-antivirus
-brew cask install nordvpn
-brew cask install visual-studio-code
-brew cask install clipy
-brew cask install cloudapp
+echo "Setup some basic folder structure that we use"
+mkdir -p leanconvert/{clients,playground,projects}
 
+echo "Looking for homebrew"
+if test ! $(which brew); then
+    echo "found notting - installing homebrew..."
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
-# Node Global Packages
+echo "I'll update homebrew recipes for you"
+brew update
+
+echo "Strech the window to fit all our propositions"
+printf '\033[8;40;80t'
+
+options=("google-chrome" "google-drive" "firefox" "sublime-text" "adobe-photoshop-cc" "slack" "licecap" "jing" "iterm2" "spectacle" "postman" "skype" "dashlane" "snagit" "avg-antivirus" "nordvpn" "visual-studio-code" "clipy" "cloudapp")
+choices=("+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+")
+menu() {
+    echo "Applications that we use mostly:"
+    for i in ${!options[@]}; do 
+        printf "%3d%s) %s\n" $((i+1)) "${choices[i]:- }" "${options[i]}"
+    done
+    [[ "$msg" ]] && echo "$msg"; :
+}
+
+prompt="Check an option (again to uncheck, ENTER when done): "
+while menu && read -rp "$prompt" num && [[ "$num" ]]; do
+    [[ "$num" != *[![:digit:]]* ]] &&
+    (( num > 0 && num <= ${#options[@]} )) ||
+    { msg="Invalid option: $num"; continue; }
+    ((num--)); msg="${options[num]} was ${choices[num]:+un}checked"
+    [[ "${choices[num]}" ]] && choices[num]="" || choices[num]="+"
+done
+
+printf  "Now homebrew will install "; msg=" notting"
+toInstall=""
+for i in ${!options[@]}; do 
+    [[ "${choices[i]}" ]] && { toInstall+=" ${options[i]}"; msg=""; }
+done
+
+echo "$toInstall $msg"
+
+for i in ${!options[@]}; do 
+    [[ "${choices[i]}" ]] && { brew cask install ${options[i]}; }
+done
+
+echo "We use also nodejs"
 brew install nodejs
 npm i -g http-server
+echo "and git"
 npm i -g git
 npm i -g trash-cli

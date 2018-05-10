@@ -4,17 +4,19 @@ Bash script for pre-installing multiple applications to your Mac.
 
 # Get Started
 
-1. Install `homebrew`
+1. Open terminal on your computer
+
+    Press CMD + Space to open spotlight search, and type terminal and hit return.
+
+2. Download our magic tool
 
     ```shell
-    ruby -e "$(curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/master/install")"
+    curl "https://gitlab.com/LeanConvert/lean-apps-installer/raw/master/leanconfig.sh"
     ```
-
-2. Copy [bash script](https://gitlab.com/LeanConvert/lean-apps-installer/blob/master/leanconfig.sh) into the `/home` (user root) directory of your computer
 
 3. Run `chmod a+x leanconfig.sh`
 
-3. Run `./leanconfig.sh` to install applications
+3. Run `./leanconfig.sh` to run macic tool
 
 Read more about `brew cask` [here](https://caskroom.github.io/)
 
@@ -24,6 +26,4 @@ Please update the `leanconfig.sh` file with required applications. To do so you 
 
 1. Run `brew cask search <application-name>` to see if the required application has its `cask` in the `brew`
 
-2. Add `brew cask install <application-name>` line to the `./leanconfig.sh` file if such `cask` exists in `brew`
-
-3. You can use `npm` to install npm packages. Use `brew cask` for the application only
+2. You can use `npm` to install npm packages. Use `brew cask` for the application only
