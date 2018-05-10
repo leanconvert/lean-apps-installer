@@ -1,31 +1,31 @@
 #!/usr/bin/env bash
 
-echo "Setup some basic folder structure that we use"
+printf "\e[1;34mSetup some basic folder structure that we use\e[0m\n"
 mkdir -p leanconvert/{clients,playground,projects}
 
-echo "Looking for homebrew"
+printf "\e[1;34mLooking for homebrew\e[0m\n"
 if test ! $(which brew); then
-    echo "found notting - installing homebrew..."
+    printf "\e[1;33mfound notting - installing homebrew...\e[0m\n"
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-echo "Updating homebrew recipes for you"
+printf "\e[1;34mUpdating homebrew recipes for you\e[0m\n"
 brew update
 
-echo "Strech the window to fit all our propositions"
-printf '\033[8;40;80t'
+printf "\e[1;34mStrech the window to fit all our propositions\e[0m\n"
+printf '\033[8;40;80t\n'
 
 options=("google-chrome" "google-drive" "firefox" "sublime-text" "adobe-photoshop-cc" "slack" "licecap" "jing" "iterm2" "spectacle" "postman" "skype" "dashlane" "snagit" "avg-antivirus" "nordvpn" "visual-studio-code" "clipy" "cloudapp")
-choices=()
+choices=("+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+")
 menu() {
-    echo "Applications that we use mostly:"
+    printf "\e[1;34mApplications that we use mostly:\e[0m\n"
     for i in ${!options[@]}; do 
-        printf "%3d%s) %s\n" $((i+1)) "${choices[i]:- }" "${options[i]}"
+        printf "\e[1;33m%3d\e[1;31m%s\e[1;33m)\e[0m \e[1;32m%s\e[0m\n" $((i+1)) "${choices[i]:- }" "${options[i]}"
     done
     [[ "$msg" ]] && echo "$msg"; :
 }
 
-echo "Plus sign next to option number is indicating that current option is selected (by default We select all options)"
+printf "\e[1;33mPlus sign next to option number is indicating that current option is selected\e[0m\n"
 
 prompt="Check an option by entering option number (again to uncheck, ENTER when done): "
 while menu && read -rp "$prompt" num && [[ "$num" ]]; do
@@ -36,21 +36,21 @@ while menu && read -rp "$prompt" num && [[ "$num" ]]; do
     [[ "${choices[num]}" ]] && choices[num]="" || choices[num]="+"
 done
 
-printf  "Now homebrew will install "; msg=" notting"
+printf  "\e[1;34mNow homebrew will install\e[0m "; msg="notting"
 toInstall=""
 for i in ${!options[@]}; do 
     [[ "${choices[i]}" ]] && { toInstall+=" ${options[i]}"; msg=""; }
 done
 
-echo "$toInstall $msg"
+printf "$toInstall $msg\n"
 
 for i in ${!options[@]}; do 
     [[ "${choices[i]}" ]] && { brew cask install ${options[i]}; }
 done
 
-echo "We use also nodejs"
+printf "\e[1;34mWe use also nodejs\e[0m\n"
 brew install nodejs
 npm i -g http-server
-echo "and git"
+printf "\e[1;34mand git\e[0m\n"
 npm i -g git
 npm i -g trash-cli
