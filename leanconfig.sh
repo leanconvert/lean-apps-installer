@@ -9,14 +9,14 @@ if test ! $(which brew); then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-echo "I'll update homebrew recipes for you"
+echo "Updating homebrew recipes for you"
 brew update
 
 echo "Strech the window to fit all our propositions"
 printf '\033[8;40;80t'
 
 options=("google-chrome" "google-drive" "firefox" "sublime-text" "adobe-photoshop-cc" "slack" "licecap" "jing" "iterm2" "spectacle" "postman" "skype" "dashlane" "snagit" "avg-antivirus" "nordvpn" "visual-studio-code" "clipy" "cloudapp")
-choices=("+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+")
+choices=()
 menu() {
     echo "Applications that we use mostly:"
     for i in ${!options[@]}; do 
@@ -25,7 +25,9 @@ menu() {
     [[ "$msg" ]] && echo "$msg"; :
 }
 
-prompt="Check an option (again to uncheck, ENTER when done): "
+echo "Plus sign next to option number is indicating that current option is selected (by default We select all options)"
+
+prompt="Check an option by entering option number (again to uncheck, ENTER when done): "
 while menu && read -rp "$prompt" num && [[ "$num" ]]; do
     [[ "$num" != *[![:digit:]]* ]] &&
     (( num > 0 && num <= ${#options[@]} )) ||

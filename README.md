@@ -8,7 +8,7 @@ Bash script for pre-installing multiple applications to your Mac.
 
     Press CMD + Space to open spotlight search, and type terminal and hit return.
 
-2. Download our magic tool
+2. Download our magic tool by simply pasting and running this script in your terminal
 
     ```shell
     curl "https://gitlab.com/LeanConvert/lean-apps-installer/raw/master/leanconfig.sh"
